@@ -5,28 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--circular button ref: https://www.geeksforgeeks.org/how-to-get-circular-buttons-in-bootstrap-4/-->
+    <style type="text/css">
+        .btn-circle.btn-sm { 
+            width: 30px; 
+            height: 30px; 
+            padding: 6px 0px; 
+            border-radius: 15px; 
+            font-size: 10px; 
+            color: white;
+            text-align: center; 
+        } 
+        .card-deck {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: .5rem;
+        }
+    </style>
+    <script>
+        var added_cards = 0;
+        function addCard(div_id){
+            ++added_cards;
+            var new_card = $('<div class="card text-right"> <div class="card-body"><a class="btn btn-circle btn-sm btn-danger" onclick="deleteCard('+added_cards+')">-</a><img class="card-img-top" src="https://i.pinimg.com/originals/28/90/ba/2890bac9ba41e52707f36268231dfe9e.png"> <div class"card-title">Tweet </div><p class="card-text">Sample tweet here</p></div></div'); 
+            new_card.attr("id",added_cards);
+            new_card.appendTo(div_id);
+        }
+
+        function deleteCard(div_id){
+            document.getElementById(div_id).remove();
+        }
+    </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">Home(HW1)</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="mypage.html">Raw Html(HW1)</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="form.html">Form(HW1)</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="profile.html">Profile(HW2)</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./signup-modal/login.html">Sign Up Modal(HW2)</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./tic-tac-toe/tic-tac-toe.html">Tic Tac Toe Game(HW2)</a>
-            </li>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home(HW1)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mypage.html">Raw Html(HW1)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="form.html">Form(HW1)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">Profile(HW2)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./signup-modal/login.html">Sign Up Modal(HW2)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./tic-tac-toe/tic-tac-toe.html">Tic Tac Toe Game(HW2)</a>
+                </li>
+            </ul>
         </ul>
     </nav>
     <div class="container">
@@ -76,6 +109,11 @@
         </table>
     </div>
     <br>
+
+    <!--div class="card">
+    <div class="card-body"> <img class="card-img-top"><h4 class="card-title">TEST</h4> <p class="card-text">moretest</p></div>
+</div-->
+
     <div class="container">
         <div class="row">
             <div class="col">
@@ -85,29 +123,38 @@
                 <button type="button" class="btn btn-info" onclick="location.href='form.html'" type="button">Add Interest</button>
             </div>
         </div>
-        <br> 
+    <br> 
         <div class="row">
             <div class="col-10">
                 <div class="card-deck">
                     <div class="card">
-                    <img class="card-img-top img-fluid" src="https://www.titan.fitness/dw/image/v2/BDBZ_PRD/on/demandware.static/-/Sites-masterCatalog_Titan/default/dw6a5edcce/images/hi-res/Fitness/430051_07.jpg?sw=800&sh=800" width="100px" height="100px">
-                        <div class="card-body">
+                    <img class="card-img-top img-fluid"  src="https://www.titan.fitness/dw/image/v2/BDBZ_PRD/on/demandware.static/-/Sites-masterCatalog_Titan/default/dw6a5edcce/images/hi-res/Fitness/430051_07.jpg?sw=800&sh=800" width="100px" height="100px">
+                        <div class="card-body" id="interest1">
                             <h5 class="card-title">Exercise/Powerlifting</h5>
                             <p class="card-text">Pick stuff up make strong!</p>
+                            <a class="btn btn-primary btn-circle btn-sm" onclick="addCard(interest1)">
+                                +
+                            </a>
                         </div>
                     </div>
                     <div class="card">
                         <img class="card-img-top" src="https://kbimages1-a.akamaihd.net/b01f6211-d8a0-4acb-b39c-d55564557fbe/1200/1200/False/the-wind-up-bird-chronicle-5.jpg">
-                        <div class="card-body">
+                        <div class="card-body" id="interest2">
                             <h5 class="card-title">Reading</h5>
                             <p class="card-text">One of my favorite books</p>
+                            <a class="btn btn-primary btn-circle btn-sm" onclick="addCard(interest2)">
+                                +
+                            </a>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card" >
                         <img class="card-img-top" src="https://f4.bcbits.com/img/a1498531746_10.jpg">
-                        <div class="card-body">
+                        <div class="card-body" id="interest3"> 
                             <h5 class="card-title">Gaming</h5>
                             <p class="card-text">My latest addiction: Slay the Spire</p>
+                            <a class="btn btn-primary btn-circle btn-sm" onclick="addCard(interest3)">
+                                +
+                            </a>
                         </div>
                     </div>
                     </div>
